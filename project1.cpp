@@ -1,6 +1,10 @@
 #include <iostream>
 #include <math.h>
+#include <vector>
+#include <string>
+#include <algorithm>
 
+using namespace std;
 
 
 double addition(double x, double y){
@@ -21,6 +25,24 @@ double production(double x, double y){
 double division(double x, double y){
     return x / y;
 
+}
+class SortedStrings {
+public:
+    void AddString(const string& s) {
+        data.push_back(s);
+    }
+    vector<std::string> GetSortedStrings() {
+        sort(begin(data), end(data));
+        return data;
+    }
+private:
+    vector<string> data;
+};
+void PrintSortedStrings(SortedStrings& strings) {
+    for (const string& s : strings.GetSortedStrings()) {
+        cout << s << " ";
+    }
+    cout << endl;
 }
 
 int main() {
@@ -51,6 +73,15 @@ int main() {
     }
 
     std::cout << "Result: " << result << "\n";
+    
+    cout << "enter 5 words to get sorted strings";
+    SortedStrings strings;
+    string s;
+    for (int i = 0; i < 5; i++) {
+        cin >> s;
+        strings.AddString(s);
+    }
+    PrintSortedStrings(strings);
 
     return 0;
 }
